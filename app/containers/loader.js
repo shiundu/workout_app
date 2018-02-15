@@ -4,7 +4,8 @@ import { connect  } from 'react-redux';
 import { ActionCreators } from '../actions';
 import { Actions } from 'react-native-router-flux';
 import GeneralStyles from '../styles/general-styles';
-
+import SocketIOClient from 'socket.io-client';
+import { View, Text } from 'react-native';
 function mapStateToProps(state) {
   return {
     workOut: state.workoutReducers,
@@ -20,14 +21,15 @@ function mapDispatchToProps(dispatch) {
 class Loader extends Component {
   constructor(props) {
     super(props);
+    this.socket = SocketIOClient('http://localhost:3000');
   }
   componentWillMount(){
     let { setTrainees, initializeAllworkouts } = this.props;
-    socket.on('workouts', function(workouts) {
+    this.socket.on('workouts', function(workouts) {
       initializeAllworkouts(workouts);
     });
 
-    socket.on('trainees', function(trainees) {
+    this.socket.on('trainees', function(trainees) {
       setTrainees(trainees);
     });
   }
