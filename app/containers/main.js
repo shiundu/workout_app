@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import Routes from './routes';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers, compose} from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import reducer from '../reducers';
+import { createStore, applyMiddleware, combineReducers  } from 'redux';
+import thunk from 'redux-thunk';
 
-const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__  });
-function configureStore(initialState) {
-  const enhancer = compose(
-    applyMiddleware(
-      thunkMiddleware,
-      //loggerMiddleware,
-    ),
-  );
-  return createStore(reducer, initialState, enhancer);
-}
-const store = configureStore({});
+
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+import * as reducers from '../reducers/index';
+const reducer = combineReducers(reducers);
+const store = createStoreWithMiddleware(reducer);
 
 import {
   AppRegistry,

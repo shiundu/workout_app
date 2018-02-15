@@ -5,11 +5,13 @@ import { ActionCreators } from '../actions';
 import {Actions, Scene, Router} from 'react-native-router-flux';
 
 
+import Loader from './loader';
 import AllWorkOuts from './all-workouts';
 import WorkOut from './work-out';
 
 const scenes = Actions.create(
   <Scene key="root">
+    <Scene key="Loader" component={Loader} hideTabBar hideNavBar title="Loader" />
     <Scene key="AllWorkOuts" component={AllWorkOuts} hideTabBar hideNavBar title="AllWorkOuts" />
     <Scene key="WorkOut" component={WorkOut} hideTabBar hideNavBar title="WorkOut" />
   </Scene>
