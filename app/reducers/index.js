@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
+//app/reducers/index.js
 
-import * as allworkoutReducers from './allworkout-reducers';
-import * as workoutReducers from './workout-reducers';
+import allworkoutReducers from './allworkout-reducers';
+import workoutReducers from './workout-reducers';
+import traineeReducers from './trainee-reducers';
 
-export default combineReducers(
-  Object.assign(
+export {
     allworkoutReducers,
     workoutReducers,
-  )
-);
+    traineeReducers,
+};
