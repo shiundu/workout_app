@@ -1,7 +1,8 @@
 import * as types from './action-types';
 
-export function initializeWorkout() {
+export function initializeAllworkouts(workouts) {
   return {
-    type: types.INITIALIZE_WORK_OUT,
+    type: types.INITIALIZE_ALL_WORK_OUT,
+    workouts
   };
 }
