@@ -22,5 +22,5 @@ react-native run-ios
 ```
 react-native run-android
 
-- make you Android SDK / Android studio installed
+- make sure Android SDK / Android studio is installed
 ```
